@@ -1,5 +1,14 @@
-import PDFViewer from '@/components/PDFViewer';
+import dynamic from 'next/dynamic';
 import { FaFilePdf, FaCalendarAlt } from 'react-icons/fa';
+
+const PDFViewer = dynamic(() => import('@/components/PDFViewer'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex justify-center items-center py-12 bg-gray-100 rounded-lg">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600" />
+    </div>
+  ),
+});
 
 export const metadata = {
   title: 'CV - Dr. Dorsa',
